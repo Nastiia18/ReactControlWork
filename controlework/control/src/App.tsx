@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { getUsers, deleteUser, User } from "./apiMethods";
 import UserList from "./components/UserList";
 import FilterBox from "./components/FilterBox";
@@ -10,8 +10,10 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const fetchUsers = async () => {
+    setLoading(true);
     const usersData = await getUsers();
     setUsers(usersData);
+    setLoading(false);
   };
 
   const handleDelete = async (id: number) => {
